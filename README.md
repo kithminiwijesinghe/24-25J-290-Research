@@ -1,6 +1,50 @@
-Prerequisites
+Function 2: Supportive learning platform for children who have dyslexia disorder
 
-If error indicates that Torchaudio couldn't find an appropriate backend to handle the .wav file. This issue is often caused by missing dependencies or incorrect installation of the Torchaudio library, particularly for handling .wav files. Torchaudio relies on FFmpeg for handling .wav and other audio formats. Install [FFmpeg](https://ffmpeg.org/download.html) on your system.s
+Model 1: Speech Recognition and Pronunciation Scoring Model
+     Use Technologies and Model: OpenAI's whisper, Transformers, PyTorch
+     Model Inputs: String (Original text), File (Audio file .wav, .mp3)
+     Model Output: Strings (Original text, Predicted text and Wer score(Word error rate))
+     Model (GitHub or Drive URL): Model File
+     Accuracy: pre-trained model
+
+Model 4: Classification Model for Progress Tracking
+     Use Technologies and Model: Scikit-learn, Decision Tree Classifier
+     Model Inputs: Integer (Attempts_Made, Accuracy, Pronunciation_Score, Time_Taken, Hints_Used, Reward_Points)
+     Model Output: Strings ("prediction": "Promoted" or "Repeat")
+     Dataset (Drive or GitHub URL): https://drive.google.com/drive/folders/1O0I2B3OzoRwJ3xjyVNwuxQwDlA9ON5sz
+     Model (GitHub or Drive URL): https://drive.google.com/drive/folders/1ppoVME2DuKY9OQtHieLw82G0v4VJNPgy
+     How to Load and Get Prediction for One Input:
+         import joblib
+import pandas as pd
+
+# Load the saved model
+model = joblib.load("f2t4.pkl")
+
+# Define a single input
+test_input = {
+    "Attempts Made": 2,         
+    "Accuracy": 85.0,            
+    "Pronunciation Score": 90.0, 
+    "Time Taken (s)": 200,       
+    "Hints Used": 1,             
+    "Reward Points": 75          
+}
+
+# Convert the input into a DataFrame
+test_df = pd.DataFrame([test_input])
+
+# Make a prediction
+prediction = model.predict(test_df)
+predicted_status = "Promoted" if prediction[0] == 1 else "Repeat"
+
+# Output the result
+print(f"Predicted Progression Status: {predicted_status}")
+
+API (TBD)
+Use Technology: Flask, Swagger
+
+
+Prerequisites
 
 ## Environment
 
