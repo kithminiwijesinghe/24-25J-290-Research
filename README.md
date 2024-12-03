@@ -23,9 +23,10 @@ Model 4: Classification Model for Progress Tracking
      
      Model (GitHub or Drive URL): https://drive.google.com/drive/folders/1ppoVME2DuKY9OQtHieLw82G0v4VJNPgy
      
-     How to Load and Get Prediction for One Input:
      
-         import joblib
+     
+How to Load and Get Prediction for One Input:  import joblib
+
 import pandas as pd
 
 # Load the saved model
