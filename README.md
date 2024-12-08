@@ -4,28 +4,27 @@ Brain-Bounce
 
 Project Brain Bounce aims to develop an intelligent mobile tutoring system for children with various learning disorders including dysgraphia, dyslexia, short-term memory loss, and dyscalculia.
 The system utilizes advanced technologies to provide personalized learning experiences, addressing specific challenges in writing, reading, memory retention, and mathematical understanding.
-## 1. Functions
+
+##  Functions
 
 ### Function 1: Supportive learning platform for children who have dysgraphia disorder
-### IT21163272 Owner Yasathri G.A Email :it21163272@my.sliit.lk
+### IT21163272 Owner Yasathri G.A    Email : it21163272@my.sliit.lk
 #### Model 1: Convolutional Neural Network (CNN) for Handwriting Recognition
 
-- *Use Technologies and Model*: Tensorflow, CNN
-- *Model Inputs*: File (image)
-- *Model Outputs*: String (Character or Number)
-- *Accuracy*:0.92
-- *How to Load and Get Prediction for One Input*:
-    python
+- **Use Technologies and Model**: Tensorflow, CNN
+- **Model Inputs**: File (image)
+- **Model Outputs**: String (Character or Number)
+- **Accuracy**:0.92
+- **How to Load and Get Prediction for One Input**:
+    ```python
     from tensorflow.keras.models import load_model
     import numpy as np
     import cv2
 
     # Load the saved model
-
     model = load_model('Handwriting_recognition_1.keras')
 
     # Load the classes
-
     with open('classes3.txt', 'r') as f:
     classes = f.read().splitlines()
     def preprocess_image(image_path):
@@ -36,8 +35,7 @@ The system utilizes advanced technologies to provide personalized learning exper
         return img
 
     # Path to the new image
-
-    image_path = '/content/dataset/Validation/Y/100.jpg'
+    image_path = ''
 
     # Preprocess the image
     processed_image = preprocess_image(image_path)
@@ -47,16 +45,16 @@ The system utilizes advanced technologies to provide personalized learning exper
     predicted_class_label = classes[predicted_class_index]
 
     print(f"Predicted Class: {predicted_class_label}")
-    
+    ```
 
 #### Model 4: Classification Model for Progress Tracking
 
-- *Use Technologies and Model*: Scikit-learn, Random Forest Regressor
-- *Model Label*: Performance
-- *Model Features*: Time, Score, Attempts, Level (int)
-- *Accuracy*:0.95
-- *How to Load and Get Prediction for One Input*:
-    python
+- **Use Technologies and Model**: Scikit-learn, Random Forest Regressor
+- **Model Label**: Performance
+- **Model Features**: Time, Score, Attempts, Level (int)
+- **Accuracy**:0.95
+- **How to Load and Get Prediction for One Input**:
+    ```python
     import pickle
 
     with open('best_rtp_model.pkl', 'rb') as file:
@@ -67,9 +65,9 @@ The system utilizes advanced technologies to provide personalized learning exper
         X_new = [data['Time'], data['Score'], data['Attempts'], data['Level']]
         prediction = model.predict([X_new])[0]
         return jsonify({'Performance': prediction})
-    
+    ```
 ---
----
+
 ### Function 2: Supportive learning platform for children who have dyslexia disorder 
 ### IT21181610 Owner - K.S.K Wijesinghe Email: it21181610@my.sliit.lk
 #### Model 1,2 and 3: Speech Recognition and Pronunciation Scoring Model
