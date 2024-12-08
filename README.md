@@ -69,6 +69,7 @@ The system utilizes advanced technologies to provide personalized learning exper
         return jsonify({'Performance': prediction})
     
 ---
+---
 ### Function 2: Supportive learning platform for children who have dyslexia disorder 
 ### IT21181610 Owner - K.S.K Wijesinghe Email: it21181610@my.sliit.lk
 #### Model 1,2 and 3: Speech Recognition and Pronunciation Scoring Model
