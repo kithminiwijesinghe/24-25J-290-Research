@@ -7,8 +7,6 @@ Model 1: Speech Recognition and Pronunciation Scoring Model
      
      Model Output: Strings (Original text, Predicted text and Wer score(Word error rate))
      
-     Model (GitHub or Drive URL): Model File
-     
      Accuracy: pre-trained model
 
 Model 4: Classification Model for Progress Tracking
@@ -18,10 +16,6 @@ Model 4: Classification Model for Progress Tracking
      Model Inputs: Integer (Attempts_Made, Accuracy, Pronunciation_Score, Time_Taken, Hints_Used, Reward_Points)
      
      Model Output: Strings ("prediction": "Promoted" or "Repeat")
-     
-     Dataset (Drive or GitHub URL): https://drive.google.com/drive/folders/1O0I2B3OzoRwJ3xjyVNwuxQwDlA9ON5sz
-     
-     Model (GitHub or Drive URL): https://drive.google.com/drive/folders/1ppoVME2DuKY9OQtHieLw82G0v4VJNPgy
      
      
      
