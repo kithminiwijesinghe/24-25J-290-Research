@@ -203,3 +203,47 @@ The system utilizes advanced technologies to provide personalized learning exper
     prediction = model.predict(random_input)
     predicted_class = le.inverse_transform(prediction)
     print("Predicted Next Level:", predicted_class[0])
+
+### Function 4: Supportive learning platform for children who have dyscalculia disorder
+### IT21187650 owner - Saubbhagya A.M.D.T Email: it21187650@my.sliit.lk
+#### Model 1: Performance Tracking and Difficulty Adjustment Model
+
+- *Use Technologies and Model*: Scikit-learn, Random Forest Regressor
+- *Model Inputs*: integer (success_count, attempt_count, game_score_xp, game_level, engagement_time_mins)
+- *Model Outputs*: String (Predicted improvement score)
+- *Accuracy*:0.98
+
+- **How to Load and Get Prediction for One Input**:
+    ```python
+    import pandas as pd
+    import joblib
+
+    # Load the saved model
+    loaded_model = joblib.load("./ptda.pkl")
+
+    # Load the scalers
+    scaler_X = joblib.load("/content/drive/MyDrive/BrainBounce/Performance Tracking and Difficulty Adjustment/scaler_X.pkl")
+    scaler_y = joblib.load("/content/drive/MyDrive/BrainBounce/Performance Tracking and Difficulty Adjustment//scaler_y.pkl")
+
+    input_data = pd.DataFrame({
+        'success_count': [1],
+        'attempt_count': [1],
+        'game_score_xp': [1],
+        'game_level': [1],
+        'engagement_time_mins': [1]
+    })
+
+    # Scale the input data
+    input_scaled = scaler_X.transform(input_data)
+
+    # Make a prediction
+    prediction_scaled = loaded_model.predict(input_scaled)
+
+    # Inverse transform the prediction to get the original scale
+    prediction_original_scale = scaler_y.inverse_transform(prediction_scaled.reshape(-1, 1))
+
+    print(f"Prediction (original scale): {prediction_original_scale[0][0]}")
+
+    
+
+    
