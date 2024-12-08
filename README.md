@@ -122,22 +122,57 @@ The system utilizes advanced technologies to provide personalized learning exper
 - Accuracy:0.99
 - How to Load and Get Prediction for One Input:
 
-import joblib
-import numpy as np
-import pandas as pd
-
 # Load the saved model
-model_filename = ''
-loaded_model = joblib.load(model_filename)
+    model_filename = ''
+    loaded_model = joblib.load(model_filename)
 
-preprocessor_filename = '/'
-loaded_preprocessor = joblib.load(preprocessor_filename)
+    preprocessor_filename = ''
+    loaded_preprocessor = joblib.load(preprocessor_filename)
 
-label_encoder_next_action_filename = ''
-label_encoder_next_action = joblib.load(label_encoder_next_action_filename)
+    label_encoder_next_action_filename = ''
+    label_encoder_next_action = joblib.load(label_encoder_next_action_filename)
 
-label_encoder_diff_level_filename = ''
-label_encoder_diff_level = joblib.load(label_encoder_diff_level_filename)
+    label_encoder_diff_level_filename = ''
+    label_encoder_diff_level = joblib.load(label_encoder_diff_level_filename)
+
+    # Define the structure of input data
+    random_data = {
+        'difficulty_level': [3],
+        'number_attempts': [2],
+        'time_spent': [30],
+        'hints_used': [1],
+        'is_correct': [1],
+        'topic': ['algebra'],
+        'subtopic': ['equations'],
+        'age': [6], 
+        'memory_recall_score': [75], 
+        'engagement_level': [4], 
+        'level_progression': [2],
+        'attempts': [10],
+        'game_type': ['puzzle'],
+        'feedback_received': ['positive'], 
+        'learning_preferences': ['visual'],
+        'correct_answers': [8], 
+        'response_time': [20],  
+        'incorrect_answers': [2], 
+        'completion_status': ['completed']
+    }
+
+    random_df = pd.DataFrame(random_data)
+
+    # Preprocessing
+    X_processed_random = loaded_preprocessor.transform(random_df)
+
+    # Make Predictions
+    predictions = loaded_model.predict(X_processed_random)
+
+    # Decode Predictions (using your loaded LabelEncoders)
+    predicted_next_action = label_encoder_next_action.inverse_transform([predictions[0][0]])[0]
+    predicted_difficulty_level = label_encoder_diff_level.inverse_transform([predictions[0][1]])[0]
+
+    # Print Predictions
+    print("Predicted Next Action:", predicted_next_action)
+    print("Predicted Difficulty Level:", predicted_difficulty_level)
 
 
   #### Model 3: Student Performance Recommendation Model
@@ -148,15 +183,22 @@ label_encoder_diff_level = joblib.load(label_encoder_diff_level_filename)
 - Accuracy:0.99
 - How to Load and Get Prediction for One Input:
 
- import joblib
-import pandas as pd
-
 # Load the model
-model = joblib.load('spr.pkl')
-le = joblib.load('spr_label_encoder.pkl')
+    model = joblib.load('spr.pkl')
+    le = joblib.load('spr_label_encoder.pkl')
 
-prediction = model.predict(random_input)
-predicted_class = le.inverse_transform(prediction)
-print("Predicted Next Level:", predicted_class[0])
-    
-    
+    # Predict for a new input
+    random_input = pd.DataFrame({
+        'Time Taken (seconds)': [500],
+        'Success Rate (%)': [85],
+        'Errors': [1],
+        'Hints Used': [2],
+        'Completion Status': [1],
+        'GameLevel_Sequence Master': [1],
+        'GameLevel_Shape Shifter': [0],
+        'GameLevel_Story Builder': [0]
+    })
+
+    prediction = model.predict(random_input)
+    predicted_class = le.inverse_transform(prediction)
+    print("Predicted Next Level:", predicted_class[0])
