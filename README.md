@@ -222,8 +222,8 @@ The system utilizes advanced technologies to provide personalized learning exper
     loaded_model = joblib.load("./ptda.pkl")
 
     # Load the scalers
-    scaler_X = joblib.load("/content/drive/MyDrive/BrainBounce/Performance Tracking and Difficulty Adjustment/scaler_X.pkl")
-    scaler_y = joblib.load("/content/drive/MyDrive/BrainBounce/Performance Tracking and Difficulty Adjustment//scaler_y.pkl")
+    scaler_X = joblib.load("")
+    scaler_y = joblib.load("")
 
     input_data = pd.DataFrame({
         'success_count': [1],
